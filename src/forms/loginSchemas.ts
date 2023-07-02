@@ -21,5 +21,5 @@ export const zodSchema = z.object({
     }).trim().min(8, messages.pwMinLength)
 })
 
-export type ZodLoginType = z.infer<typeof zodSchema>
+export type ZodLoginSchema = z.infer<typeof zodSchema>
 export type YupLoginSchema = y.InferType<typeof yupSchema>
