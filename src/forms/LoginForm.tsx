@@ -23,8 +23,7 @@ export const LoginForm = () => {
   const [errors, setErrors] = useState<FieldErrors<ZodLoginSchema>>();
 
   return (
-    <form noValidate onSubmit={handleSubmit((v) => setValues(v), setErrors)}>
-      <h1>Login</h1>
+    <form noValidate onSubmit={handleSubmit((v) => {setValues(v); setErrors({})}, setErrors)}>
       <ChangeSchemaProvider
         provider={schemaProvider}
         onChange={setSchemaProvider}

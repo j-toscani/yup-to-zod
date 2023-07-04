@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react";
+import styles from "./ChangeSchemaProvider.module.css"
 
 export function ChangeSchemaProvider(props: {
   provider: "zod" | "yup";
@@ -10,7 +11,7 @@ export function ChangeSchemaProvider(props: {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <label htmlFor="yup">
         Yup
         <input
