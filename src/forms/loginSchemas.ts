@@ -13,12 +13,8 @@ export const yupSchema = y.object({
 })
 
 export const zodSchema = z.object({
-    email: z.string({
-        required_error: messages.required
-    }).email(messages.email),
-    password: z.string({
-        required_error: messages.required
-    }).trim().min(8, messages.pwMinLength)
+    email: z.string({required_error: messages.required}).email(messages.email),
+    password: z.string({required_error: messages.required}).trim().min(8, messages.pwMinLength)
 })
 
 export type ZodLoginSchema = z.infer<typeof zodSchema>
