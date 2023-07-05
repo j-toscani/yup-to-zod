@@ -1,4 +1,5 @@
 import "./App.css";
+import { ConditionalForm } from "./forms/ConditionalForm";
 import { LoginForm } from "./forms/LoginForm";
 
 function App() {
@@ -20,10 +21,11 @@ function App() {
         </section>
         <section>
           <h2 id="conditional">Formular mit Konditionalem Input</h2>
+          <ConditionalForm />
         </section>
         <section>
           <h2 id="conditional-multi-error">
-            Formular mit komplexen fehler Feedback
+            Formular mit komplexem fehler Feedback
           </h2>
         </section>
       </main>

@@ -43,7 +43,7 @@ export const LoginForm = () => {
         />
       </fieldset>
 
-      <button type="submit"> Submit </button>
+      <button type="submit"> Absenden </button>
       {errors && <ShowErrors errors={errors} />}
       <pre>{JSON.stringify(values, null, 2)}</pre>
     </form>

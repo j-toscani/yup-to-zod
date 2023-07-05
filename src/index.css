@@ -31,7 +31,8 @@ fieldset {
   border: none;
 }
 
-input:not([type="radio"]) {
+input:not([type="radio"]),
+select {
   font-size: 1rem;
   padding: 0.5rem 1rem;
   width: 30ch
