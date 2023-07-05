@@ -1,0 +1,12 @@
+.openingHours {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 10ch repeat(2, 1fr);
+  padding: 0.5rem 1rem;
+}
+
+.opening {
+  padding: 0 0.5rem 0.5rem;
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 0.5rem
+}
