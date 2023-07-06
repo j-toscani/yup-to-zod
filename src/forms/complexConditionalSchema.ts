@@ -1,5 +1,17 @@
 import * as z from 'zod';
 
+const timeToNumber = (hours:string, minutes:string) => {
+    const date = new Date(0,0,0, parseInt(hours), parseInt(minutes))
+    return date.getTime()
+} 
+
+const startBeforeEnd = (start: string, end: string) => {
+    const [startHour, startMinutes] = start.split(':');
+    const [endHour, endMinutes] = end.split(':');
+    
+    return timeToNumber(startHour, startMinutes) < timeToNumber(endHour, endMinutes)
+}
+
 const telephoneAvailableSchema = z.object({
     enabled: z.boolean(),
     day: z.string(),
@@ -10,7 +22,7 @@ const telephoneAvailableSchema = z.object({
 
     if (!data.start) {
         context.addIssue({
-            message: "Startdatum ist erforderlich",
+            message: "Startzeit ist erforderlich",
             code: z.ZodIssueCode.custom,
             path: ["start"]
         })
@@ -18,7 +30,15 @@ const telephoneAvailableSchema = z.object({
 
     if (!data.end) {
         context.addIssue({
-            message: "Enddatum ist erforderlich",
+            message: "Endzeit ist erforderlich",
+            code: z.ZodIssueCode.custom,
+            path: ["end"]
+        })
+    }
+
+    if (data.start && data.end && !startBeforeEnd(data.start, data.end)) {
+        context.addIssue({
+            message: "Die Endzeit muss nach der Startzeit liegen.",
             code: z.ZodIssueCode.custom,
             path: ["end"]
         })

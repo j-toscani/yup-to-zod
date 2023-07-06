@@ -68,8 +68,8 @@ export const ComplexConditionalForm = () => {
         />
         <input {...register("zip")} type="text" name="zip" placeholder="PLZ" />
       </fieldset>
-      {fields.map(({ day }, index) => (
-        <div className={styles.opening}>
+      {fields.map(({ day, id }, index) => (
+        <div key={id} className={styles.opening}>
           <h3 style={{ margin: 0 }}>{day}</h3>
           <fieldset className={styles.openingHours}>
             <div>
@@ -90,12 +90,16 @@ export const ComplexConditionalForm = () => {
               type="time"
               {...register(`telephoneAvailable.${index}.end`)}
             />
+            {errors && Array.isArray(errors.telephoneAvailable) && (
+              <div style={{gridColumn: "1 / -1", color: "red"}}>
+                <ShowErrors errors={errors.telephoneAvailable[index] ?? {}} />
+              </div>
+            )}
           </fieldset>
         </div>
       ))}
       <button type="submit">Absenden</button>
       {errors && <ShowErrors errors={errors} />}
-      {errors && Array.isArray(errors.telephoneAvailable) && errors.telephoneAvailable.map(err => <ShowErrors errors={err} />)}
       <pre>{JSON.stringify(values, null, 2)}</pre>
     </form>
   );
